@@ -10,6 +10,33 @@
     "categories": [
         "Other"
     ],
+    "bugs": {
+        "email": "sreenivas9alapati@gmail.com",
+        "url": "https://github.com/cg-cnu/vscode-remind-me/issues"
+    },
+    "galleryBanner": {
+        "theme": "dark"
+    },
+    "homepage": "https://github.com/cg-cnu/vscode-remind-me",
+    "icon": "icons/remind-me-128.png",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/cg-cnu/vscode-remind-me"
+    },
+    "author": {
+        "email": "sreenivas9alapati@gmail.com",
+        "name": "Sreenivas Alapati",
+        "url": "https://twitter.com/cgcnu"
+    },
+    "readme": "README.md",
+    "license": "MIT",
+    "keywords": [
+        "reminder",
+        "todo",
+        "timer",
+        "productivity",
+        "note"
+    ],
     "activationEvents": [
         "onCommand:remindMe.remind"
     ],

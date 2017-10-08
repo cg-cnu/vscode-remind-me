@@ -2,12 +2,12 @@
 import * as vscode from 'vscode';
 
 // TODO: created by salapati @ 2017-10-7 02:06:21
-// Add more funny these
+// Add more funny these and emojis
 const funTodos = [
-    'to conquere the world 5',
+    'to conquere the world 👏 5',
     'about meeting 2',
     'to git commit 10',
-    'to water plants 20',
+    'to water myself 20',
     'to do more opensource 5'
 ]
 
@@ -38,7 +38,7 @@ export function activate(context: vscode.ExtensionContext) {
             // IDEA: logged by salapati @ 2017-10-7 08:43:25
             // show a status bar icon ?
             var timer = setInterval(function () {
-                vscode.window.showInformationMessage(`Yo! Reminder ${reminder} now!`);
+                vscode.window.showInformationMessage(`⏰Reminder ${reminder} now!⏰`);
             }, timePeriod)
             // NOTE: note written by salapati @ 2017-10-7 08:44:01
             // what if the editor is closed ?
