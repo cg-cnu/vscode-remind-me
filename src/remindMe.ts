@@ -1,14 +1,13 @@
 'use strict';
 import * as vscode from 'vscode';
 
-// TODO: created by salapati @ 2017-10-7 02:06:21
-// Add more funny these and emojis
 const funTodos = [
-    'to conquere the world 👏 5',
-    'about meeting 2',
-    'to git commit 10',
-    'to water myself 20',
-    'to do more opensource 5'
+    'conquere the 🌍 5',
+    'attend 🤝 meeting 😓 2',
+    '🐙 git 🐱 commit 10',
+    '💧 water 💧 myself 20',
+    '🍊🍐 feed 🥕🥒 myself 10',
+    'do 🎆 opensource 🎆 😎 5'
 ]
 
 export function activate(context: vscode.ExtensionContext) {
@@ -17,30 +16,27 @@ export function activate(context: vscode.ExtensionContext) {
         var funTodo = funTodos[Math.floor(Math.random() * funTodos.length)]
         vscode.window.showInputBox({
             ignoreFocusOut: true,
-            placeHolder: `Remind me <${funTodos[0]}> minutes later!`,
-            prompt: `Enter todo ending with number of minutes.`,
+            placeHolder: `Remind me to {{${funTodo}}} minutes later!`,
+            prompt: `Enter todo ending with number of minutes ⏰`,
         }).then(reminder => {
             if (!reminder) {
                 return;
             }
-            // FIXME: noticed by user @ 2017-10-7 02:19:32
-            // Need better logic here...
-            // extract minutes 
             const remind = reminder.split(' ')
-            // TODO: created by user @ 2017-10-7 09:28:28
-            // validations for the time period
-            // its a number
-            // not zero
-            // not float
-            // not negative
-            const timePeriod = parseInt(reminder[reminder.length - 1]) * 60000
-            vscode.window.showInformationMessage(`Remind me ${reminder} minutes later!`);
+            const timePeriod = parseInt(remind[remind.length - 1])
+            if(timePeriod <= 0){
+                vscode.window.showWarningMessage('Are you testing? 😉');
+                return false;
+            }
+            vscode.window.showInformationMessage(`⏰ I will remind you  to ' ${reminder} ' minutes later! 😎`);
             // IDEA: logged by salapati @ 2017-10-7 08:43:25
             // show a status bar icon ?
+            // which will list all the reminders ?
             var timer = setInterval(function () {
-                vscode.window.showInformationMessage(`⏰Reminder ${reminder} now!⏰`);
-            }, timePeriod)
-            // NOTE: note written by salapati @ 2017-10-7 08:44:01
+                vscode.window.showInformationMessage(
+                    `⏰ Reminder to ${reminder.replace(timePeriod.toString(), '')} now! ⏰`);
+            }, timePeriod * 60000)
+            // IDEA: logged by salapati @ 2017-10-7 08:44:01
             // what if the editor is closed ?
             // make it persistent ?
         });
