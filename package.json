@@ -2,7 +2,7 @@
     "name": "vscode-remind-me",
     "displayName": "Remind Me",
     "description": "Ask vscode to remind you...",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "publisher": "cg-cnu",
     "engines": {
         "vscode": "^1.16.0"
@@ -15,7 +15,8 @@
         "url": "https://github.com/cg-cnu/vscode-remind-me/issues"
     },
     "galleryBanner": {
-        "theme": "dark"
+        "theme": "dark",
+        "color": "#3E0E0E"
     },
     "homepage": "https://github.com/cg-cnu/vscode-remind-me",
     "icon": "icons/remind-me-128.png",
