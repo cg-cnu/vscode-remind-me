@@ -4,7 +4,7 @@ import * as vscode from 'vscode';
 const funTodos: string[] = [
     'conquere the 🌍 5',
     'attend 🤝 meeting 😓 2',
-    '🐙 git 🐱 commit 10',
+    '🐙 commit 🐱 10',
     '💧 water 💧 myself 20',
     '🍊🍐 feed 🥕🥒 myself 10',
     'do 🎆 opensource 🎆 😎 5'
