@@ -29,7 +29,10 @@ export function activate(context: vscode.ExtensionContext) {
                 return false;
             }
             const reminderText: string = reminder.replace(timePeriod.toString(), '').trim()
-            vscode.window.showInformationMessage(`⏰ I will remind you  to '${reminderText}' ${timePeriod} minutes later! 😎`);
+            let reminderMessage: string = `⏰ I will remind you  to '${reminderText}' ${timePeriod} minute`
+            reminderMessage += timePeriod === 1 ?  '':'s'
+            reminderMessage += ' later! 😎'
+            vscode.window.showInformationMessage(reminderMessage);
             // IDEA: logged by salapati @ 2017-10-7 08:43:25
             // show a status bar icon ?
             // which will list all the reminders ?
