@@ -33,16 +33,13 @@ export function activate(context: vscode.ExtensionContext) {
             reminderMessage += timePeriod === 1 ?  '':'s'
             reminderMessage += ' later! 😎'
             vscode.window.showInformationMessage(reminderMessage);
-            // IDEA: logged by salapati @ 2017-10-7 08:43:25
-            // show a status bar icon ?
-            // which will list all the reminders ?
             var timer = setInterval(function () {
                 vscode.window.showInformationMessage(
-                    `⏰ Reminder to ${reminderText} now! ⏰`);
+                    `⏰ Reminder to ${reminderText} now! ⏰`)
+                    .then( () => {
+                        clearTimeout(timer)
+                    })
             }, timePeriod * 60000)
-            // IDEA: logged by salapati @ 2017-10-7 08:44:01
-            // what if the editor is closed ?
-            // make it persistent ?
         });
     });
     context.subscriptions.push(reminder);
