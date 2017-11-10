@@ -5,3 +5,8 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 - Initial release
+
+
+## [0.0.3] - 2017-10-11
+### Fixed
+- Stop the notificationi [#6](https://github.com/cg-cnu/vscode-remind-me/issues/6)

@@ -2,7 +2,7 @@
     "name": "vscode-remind-me",
     "displayName": "Remind Me",
     "description": "Ask vscode to remind you...",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "publisher": "cg-cnu",
     "engines": {
         "vscode": "^1.16.0"
