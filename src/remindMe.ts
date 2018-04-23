@@ -31,7 +31,7 @@ export function activate(context: vscode.ExtensionContext) {
                 return;
             }
             // reminder message
-            let reminderMessage: string = ` ⏰  ${event.eventTitle} ${datefns.distanceInWordsToNow(event.startDate)}`
+            let reminderMessage: string = ` ⏰  ${event.eventTitle} in ${datefns.distanceInWordsToNow(event.startDate)}`
             vscode.window.showInformationMessage(reminderMessage);
 
             // reminder time 
