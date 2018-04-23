@@ -10,3 +10,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ## [0.0.3] - 2017-10-11
 ### Fixed
 - Stop the notificationi [#6](https://github.com/cg-cnu/vscode-remind-me/issues/6)
+
+## [0.1.0] - 2017-10-11
+- Using Sherlockjs - the natural language even parser
+- Replace monster module moment with date-fns
