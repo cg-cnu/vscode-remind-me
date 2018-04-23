@@ -15,18 +15,22 @@ Just ask vscode to remind you 😎
 
 ## Demo:
 
-<img src="https://user-images.githubusercontent.com/2767425/31403745-b2d23a46-ae17-11e7-9e2f-fc5892362a1f.gif"></img>
+<img src="https://user-images.githubusercontent.com/2767425/39146472-7e90b5c4-4754-11e8-9429-eabbc1f8c645.gif"></img>
 
 ## Features:
 
 * Set a quick reminder in vscode with out switching applications.
 
-* Just fill the text in the {{}} ending with the no of minutes. For example just write `conquere the 🌍 5`
+* Just fill the text with natural language and let vscode figure it out for you.
 
-### Issue/Feedback:
+## Inspiration/Credits:
+
+* Build using the amazing [Sherlockjs](https://github.com/neilgupta/Sherlock) by [neilgupta](https://github.com/neilgupta)
+
+## Issue/Feedback:
 
 log them in the [github issues](https://github.com/cg-cnu/vscode-remind-me/issues) or hit me on [twitter](https://twitter.com/cgcnu).
 
-### Like it?:
+## Like it?:
 
 ⭐ this repo.
