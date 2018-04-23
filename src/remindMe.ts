@@ -1,7 +1,7 @@
 'use strict';
 import * as vscode from 'vscode';
 import * as sherlock from 'sherlockjs';
-import * as moment from 'moment';
+import * as datefns from 'date-fns';
 
 const funTodos: string[] = [
     'conquere the 🌍  tomorrow',
@@ -9,7 +9,7 @@ const funTodos: string[] = [
     'attend 🤝 meeting in 2 hours',
     '💧 water💧 myself at 4 pm',
     '🍊🍐 feed 🥕🥒 myself at 12:30 Am',
-    'do 🎆opensource🎆 😎 after 5:30 pm'
+    'do 🎆 opensource 🎆 😎 after 5:30 pm'
 ]
 
 export function activate(context: vscode.ExtensionContext) {
@@ -27,15 +27,15 @@ export function activate(context: vscode.ExtensionContext) {
             // parse the input with sherlockjs
             const event = sherlock.parse(reminder);
             if (!event.eventTitle || !event.startDate) {
-                vscode.window.showWarningMessage(' Sorry boss! Couldnt understand, mind repeating ? 😉');
+                vscode.window.showWarningMessage('🤖 Sorry boss! Couldnt understand, mind repeating ? 😉');
                 return;
             }
             // reminder message
-            let reminderMessage: string = ` ⏰  ${event.eventTitle} ${moment(event.startDate).fromNow()}`
+            let reminderMessage: string = ` ⏰  ${event.eventTitle} ${datefns.distanceInWordsToNow(event.startDate)}`
+            vscode.window.showInformationMessage(reminderMessage);
 
             // reminder time 
-            const timePeriod = moment(event.startDate).diff(moment(), 'milliseconds')
-            vscode.window.showInformationMessage(reminderMessage);
+            const timePeriod = datefns.differenceInMilliseconds( event.startDate, new Date() );
             var timer = setInterval(function () {
                 vscode.window.showInformationMessage(
                     `⏰  ${event.eventTitle} now! ⏰`)
