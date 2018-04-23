@@ -1,13 +1,15 @@
 'use strict';
 import * as vscode from 'vscode';
+import * as sherlock from 'sherlockjs';
+import * as moment from 'moment';
 
 const funTodos: string[] = [
-    'conquere the 🌍 5',
-    'attend 🤝 meeting 😓 2',
-    '🐙 commit 🐱 10',
-    '💧 water 💧 myself 20',
-    '🍊🍐 feed 🥕🥒 myself 10',
-    'do 🎆 opensource 🎆 😎 5'
+    'conquere the 🌍  tomorrow',
+    'git 🐙 commit 🐱 in 10 mins',
+    'attend 🤝 meeting in 2 hours',
+    '💧 water💧 myself at 4 pm',
+    '🍊🍐 feed 🥕🥒 myself at 12:30 Am',
+    'do 🎆opensource🎆 😎 after 5:30 pm'
 ]
 
 export function activate(context: vscode.ExtensionContext) {
@@ -16,30 +18,31 @@ export function activate(context: vscode.ExtensionContext) {
         var funTodo: string = funTodos[Math.floor(Math.random() * funTodos.length)]
         vscode.window.showInputBox({
             ignoreFocusOut: true,
-            placeHolder: `Remind me to {{${funTodo}}} minutes later!`,
-            prompt: `Enter reminder ending with number of minutes ⏰`,
+            placeHolder: `${funTodo}`,
+            prompt: `Ask vscode to remind you! ⏰`,
         }).then(reminder => {
             if (!reminder) {
                 return;
             }
-            const remind: string[] = reminder.trim().split(' ');
-            const timePeriod: number = parseInt(remind[remind.length - 1]);
-            if (!timePeriod || timePeriod <= 0) {
-                vscode.window.showWarningMessage(' Plese enter a reminder ending with number of minutes 😉');
-                return false;
+            // parse the input with sherlockjs
+            const event = sherlock.parse(reminder);
+            if (!event.eventTitle || !event.startDate) {
+                vscode.window.showWarningMessage(' Sorry boss! Couldnt understand, mind repeating ? 😉');
+                return;
             }
-            const reminderText: string = reminder.replace(timePeriod.toString(), '').trim()
-            let reminderMessage: string = `⏰ I will remind you  to '${reminderText}' ${timePeriod} minute`
-            reminderMessage += timePeriod === 1 ?  '':'s'
-            reminderMessage += ' later! 😎'
+            // reminder message
+            let reminderMessage: string = ` ⏰  ${event.eventTitle} ${moment(event.startDate).fromNow()}`
+
+            // reminder time 
+            const timePeriod = moment(event.startDate).diff(moment(), 'milliseconds')
             vscode.window.showInformationMessage(reminderMessage);
             var timer = setInterval(function () {
                 vscode.window.showInformationMessage(
-                    `⏰ Reminder to ${reminderText} now! ⏰`)
-                    .then( () => {
+                    `⏰  ${event.eventTitle} now! ⏰`)
+                    .then(() => {
                         clearTimeout(timer)
                     })
-            }, timePeriod * 60000)
+            }, timePeriod)
         });
     });
     context.subscriptions.push(reminder);
