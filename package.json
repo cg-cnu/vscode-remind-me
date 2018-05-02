@@ -58,11 +58,11 @@
         "test": "npm run compile && node ./node_modules/vscode/bin/test"
     },
     "devDependencies": {
-        "typescript": "^2.5.2",
-        "vscode": "^1.1.5",
-        "mocha": "^3.5.0",
-        "@types/node": "^7.0.43",
-        "@types/mocha": "^2.2.42"
+        "@types/mocha": "^5.2.0",
+        "@types/node": "^10.0.2",
+        "mocha": "^5.1.1",
+        "typescript": "^2.8.3",
+        "vscode": "^1.1.16"
     },
     "dependencies": {
         "date-fns": "^1.29.0",
