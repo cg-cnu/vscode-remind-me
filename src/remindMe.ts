@@ -2,6 +2,8 @@
 import * as vscode from 'vscode';
 import * as sherlock from 'sherlockjs';
 import * as datefns from 'date-fns';
+import * as path from 'path';
+import { writeFileSync } from 'fs';
 
 const funTodos: string[] = [
     'conquere the 🌍  tomorrow',
@@ -11,6 +13,14 @@ const funTodos: string[] = [
     '🍊🍐 feed 🥕🥒 myself at 12:30 Am',
     'do 🎆 opensource 🎆 😎 after 5:30 pm'
 ]
+
+function getRootPath() {
+    var config: string = vscode.workspace.getConfiguration().get("remindme.path");
+    if (!config) {
+      config = process.env[process.platform == "win32" ? "USERPROFILE" : "HOME"];
+    }
+    return path.join(config, ".remindme");
+  }
 
 export function activate(context: vscode.ExtensionContext) {
 
@@ -33,6 +43,18 @@ export function activate(context: vscode.ExtensionContext) {
             // reminder message
             let reminderMessage: string = ` ⏰  ${event.eventTitle} in ${datefns.distanceInWordsToNow(event.startDate)}`
             vscode.window.showInformationMessage(reminderMessage);
+
+            // read 
+            // update 
+            // write
+            // const obj = {
+            //     ""
+            // }
+            // write to disk
+            var json = JSON.stringify(obj);
+            
+            const config = getRootPath();
+            writeFileSync(config, 'utf8')
 
             // reminder time 
             const timePeriod = datefns.differenceInMilliseconds( event.startDate, new Date() );
